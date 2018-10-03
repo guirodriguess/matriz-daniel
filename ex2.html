@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script>
+		mat = [];
+		function calcula() {
+			var i;
+			for(i=0;i<2;i++){
+				mat[i] = []
+			}
+			for(i=0;i<2;i++){
+				for(var j = 0; j < 4; j++){
+					mat[i][j] = parseInt(document.getElementById(i+"x"+j).value);	
+				}
+			}
+			//processamento(encontrar os dados)
+			var qde = 0;
+			for(i=0;i<2;i++){
+				qde = 0;
+				for(j = 0; j < 4; j++){
+					if ((mat[i][j] >= 12) && (mat[i][j] <=20)){
+						qde = qde + 1;
+					}	
+				}
+			document.getElementById("saida").innerHTML += "Linha " + i + " = " + qde + "</br>";
+			}
+
+			var media = 0;
+			var aux = 0;
+			for(i=0;i<2;i++){
+				for(j = 0; j < 4; j++){
+					if (mat[i][j] % 2 == 0){
+						media = media + mat[i][j];
+						aux = aux + 1;
+					}
+				}
+			}
+			document.getElementById("saidaPar").innerHTML = "Média de números pares: " + media/aux;
+		}
+	</script>
+	
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<input type="number" id="0x0">
+			</td> 
+			<td>
+				<input type="number" id="0x1">
+			</td> 
+			<td>
+				<input type="number" id="0x2">
+			</td> 
+			<td>
+				<input type="number" id="0x3">
+			</td> 
+		</tr>
+		<tr>
+			<td>
+				<input type="number" id="1x0">
+			</td> 
+			<td>
+				<input type="number" id="1x1">
+			</td> 
+			<td>
+				<input type="number" id="1x2">
+			</td> 
+			<td>
+				<input type="number" id="1x3">
+			</td> 
+		</tr>
+	</table>
+	<p>
+		<button onclick="calcula()">Calcula</button>
+	</p>
+	<p id="saida"></p>
+	<p id="saidaPar"></p>
+
+</body>
+</html>

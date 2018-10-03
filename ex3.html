@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script>
+		mat = [];
+		function calcula() {
+			var i;
+			for(i=0;i<6;i++){
+				mat[i] = []
+			}
+			for(i=0;i<6;i++){
+				for(var j = 0; j < 3; j++){
+					mat[i][j] = parseInt(document.getElementById(i+"x"+j).value);	
+				}
+			}
+			//processamento(encontrar os dados)
+			var maior = mat[0][0];
+			var menor = mat[0][0];
+			var posicao = "[0,0]";
+			var posicaoMenor = "[0,0]";
+			for(i=0;i<6;i++){
+				for(j = 0; j < 3; j++){
+					if (mat[i][j] > maior){
+						maior = mat[i][j];
+						posicao = "["+i+","+j+"]";
+					}
+					if(mat[i][j] < menor){
+						menor = mat[i][j];
+						posicaoMenor = "["+i+","+j+"]";
+					}
+				}
+			}
+			document.getElementById("saida").innerHTML = "Maior elemento da matriz: " + maior + "</br>Posição do maior elemento: " + posicao + "</br>Menor elemento da matriz: " + menor + "</br>Posição do menor elemento: " + posicaoMenor;
+		}
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<input type="number" id="0x0">
+			</td> 
+			<td>
+				<input type="number" id="0x1">
+			</td> 
+			<td>
+				<input type="number" id="0x2">
+			</td> 
+		</tr>
+		<tr>
+			<td>
+				<input type="number" id="1x0">
+			</td> 
+			<td>
+				<input type="number" id="1x1">
+			</td> 
+			<td>
+				<input type="number" id="1x2">
+			</td> 
+		</tr>
+		<tr>
+			<td>
+				<input type="number" id="2x0">
+			</td> 
+			<td>
+				<input type="number" id="2x1">
+			</td> 
+			<td>
+				<input type="number" id="2x2">
+			</td> 
+		</tr>
+		<tr>
+			<td>
+				<input type="number" id="3x0">
+			</td> 
+			<td>
+				<input type="number" id="3x1">
+			</td> 
+			<td>
+				<input type="number" id="3x2">
+			</td> 
+		</tr>
+		<tr>
+			<td>
+				<input type="number" id="4x0">
+			</td> 
+			<td>
+				<input type="number" id="4x1">
+			</td> 
+			<td>
+				<input type="number" id="4x2">
+			</td> 
+		</tr>
+		<tr>
+			<td>
+				<input type="number" id="5x0">
+			</td> 
+			<td>
+				<input type="number" id="5x1">
+			</td> 
+			<td>
+				<input type="number" id="5x2">
+			</td> 
+		</tr>
+
+	</table>
+	<p>
+		<button onclick="calcula()">Calcula</button>
+	</p>
+	<p id="saida"></p>
+</body>
+</html>
