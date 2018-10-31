@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var mat = [];
+        function cria(){
+            var tabela = "<table>";
+            var i;
+            for (i=0;i<12;i++){
+                tabela += "<tr>";
+                for(var j = 0; j < 4; j++){
+                    tabela = tabela + "<td>" + 
+                        "<input id='l" + i + "c" + j + "'type='number'" + 
+                        "style='width:50px'> </td>";
+                }
+                tabela += "</tr>";
+            }    
+            tabela = tabela + "</table>";
+            document.getElementById("dinamico").innerHTML = tabela;
+        }   
+        function cadastro() {
+            var i, j;
+            for(i=0; i<12; i++) {
+                mat[i] = [];
+            }
+            for(i=0; i<12; i++){
+                for(j=0; j<4; j++) {
+                    mat[i][j] = Number(document.getElementById("l"+i+"c"+j).value);
+                }
+            }
+            document.getElementById("aviso1").innerHTML = "Matriz cadastrada com sucesso";
+        }
+        function totalMes(){
+            var mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
+            var i, j;
+            for (i = 0; i < 12; i++){
+                total = 0;
+                for(j=0; j < 4; j++){
+                    total += mat[i][j]
+                }
+                document.getElementById("aviso2").innerHTML += "</br>Total de vendas do mês de " + mes[i] + ": " + total;
+            }
+
+            total = 0;
+            var semana  = ['1ª semana' , '2ª semana', '3ª semana','4ª semana'];
+            for(i=0;i<12;i++){
+                for(j=0;j<1;j++){
+                    total += mat[i][j];
+                    document.getElementById("aviso3").innerHTML = "</br>Total de vendas da "+ semana[j] + " do ano inteiro foi: " + total;
+                }
+            }
+            total = 0;
+            for(i=0;i<12;i++){
+                for(j=1;j<2;j++){
+                    total += mat[i][j];
+                    document.getElementById("aviso4").innerHTML = "</br>Total de vendas da "+ semana[j] + " do ano inteiro foi: " + total;
+                }
+            }
+            total = 0;
+            for(i=0;i<12;i++){
+                for(j=2;j<3;j++){
+                    total += mat[i][j];
+                    document.getElementById("aviso5").innerHTML = "</br>Total de vendas da "+ semana[j] + " do ano inteiro foi: " + total;
+                }
+            }
+            total = 0;
+            for(i=0;i<12;i++){
+                for(j=3;j<4;j++){
+                    total += mat[i][j];
+                    document.getElementById("aviso6").innerHTML = "</br>Total de vendas da "+ semana[j] + " do ano inteiro foi: " + total;
+                }
+            }
+            total=0;
+            for(i=0;i<12;i++){
+                for(j=0;j<4;j++){
+                    total += mat[i][j];
+                }
+            }
+            document.getElementById("aviso7").innerHTML = "</br>Total de vendas do ano inteiro foi: " + total;
+        }
+    </script>
+</head>
+<body onload ="cria()">
+    <div id = "dinamico"> <!--Cria a matriz-->
+    </div>
+    <p>
+        <button onclick="cadastro()">Cadastro</button>
+        <p id="aviso1"></p>
+    </p>
+    <p>
+        <button onclick="totalMes()">Total/Mês</button>
+        <p id="aviso2"></p>
+        <p id="aviso3"></p>
+        <p id="aviso4"></p>
+        <p id="aviso5"></p>
+        <p id="aviso6"></p>
+        <p id="aviso7"></p>
+    </p>    
+</body>
+</html>
