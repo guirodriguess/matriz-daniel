@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var mat = [];
+        function cria(){
+            var tabela = "<table>";
+            var i;
+            for (i=0;i<20;i++){
+                tabela += "<tr>";
+                for(var j = 0; j < 10; j++){
+                    tabela = tabela + "<td>" + 
+                        "<input id='l" + i + "c" + j + "'type='number'" + 
+                        "style='width:50px'> </td>";
+                }
+                tabela += "</tr>";
+            }    
+            tabela = tabela + "</table>";
+            document.getElementById("dinamico").innerHTML = tabela;
+        }   
+        function cadastro() {
+            var i, j;
+            for(i=0; i<20; i++) {
+                mat[i] = [];
+            }
+            for(i=0; i<20; i++){
+                for(j=0; j<10; j++) {
+                    mat[i][j] = Number(document.getElementById("l"+i+"c"+j).value);
+                }
+            }
+            document.getElementById("aviso1").innerHTML = "Matriz cadastrada com sucesso";
+        }
+        function somaColuna(){
+            for (j = 0 ; j< 10; j++ ){
+                for (i = 0 ; i < 20; i++){
+                    
+                }
+            }
+        }
+        
+    </script>
+</head>
+<body onload ="cria()">
+    <div id = "dinamico"> <!--Cria a matriz-->
+    </div>
+    <p>
+        <button onclick="cadastro()">Cadastro</button>
+        <p id="aviso1"></p>
+    </p>
+    <p>
+        <button onclick="somaColuna()">Soma</button>
+        <p id="aviso2"></p>
+        <p id="aviso3"></p>
+        <p id="aviso4"></p>
+    </p>    
+</body>
+</html>
