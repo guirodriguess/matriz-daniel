@@ -17,7 +17,8 @@
             }    
             tabela = tabela + "</table>";
             document.getElementById("dinamico").innerHTML = tabela;
-        }   
+        }
+
         function cadastro() {
             var i, j;
             for(i=0; i<20; i++) {
@@ -30,14 +31,27 @@
             }
             document.getElementById("aviso1").innerHTML = "Matriz cadastrada com sucesso";
         }
+
         function somaColuna(){
-            for (j = 0 ; j< 10; j++ ){
+            var i, j;
+            var somaColuna;
+            var vet  = [];
+            for (j = 0 ; j < 10; j++){
+                 somaColuna = 0;
                 for (i = 0 ; i < 20; i++){
-                    
+                    somaColuna = somaColuna + mat[i][j];
+                    vet[j] = somaColuna;
                 }
+                document.getElementById("aviso2").innerHTML += "A soma da coluna " + j + " é: " + vet[j] + "</br>";
+            }
+            for (j = 0 ; j < 10; j++){
+                mult = 0
+                for(i=0; i<20;i++){
+                    mult = mat[i][j] * vet[j];
+                }
+                document.getElementById("aviso3").innerHTML += "A matriz resultante é: " +  mult;
             }
         }
-        
     </script>
 </head>
 <body onload ="cria()">
